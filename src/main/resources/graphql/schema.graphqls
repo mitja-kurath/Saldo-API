@@ -7,7 +7,7 @@ type Transaction {
 
 type Query {
   transaction(id: ID!): Transaction,
-  transactions(startDate: String, endDate: String, sort: Sort): [Transaction!]!,
+  transactions(startDate: String, endDate: String, sort: Sort, sortBy: SortBy): [Transaction!]!,
 }
 
 type Mutation {
@@ -17,4 +17,9 @@ type Mutation {
 enum Sort {
  ASC,
  DESC
+}
+
+enum SortBy {
+	DATE,
+	AMOUNT
 }
