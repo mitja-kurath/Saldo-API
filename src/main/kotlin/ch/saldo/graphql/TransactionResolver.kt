@@ -11,7 +11,7 @@ import java.util.UUID
 
 @Controller
 class TransactionResolver(
-    val transactionRepository: TransactionRepository
+    private val transactionRepository: TransactionRepository
 ) {
 
     @QueryMapping

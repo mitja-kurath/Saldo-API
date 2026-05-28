@@ -1,17 +1,25 @@
+scalar Date
+
 type Transaction {
 	id: ID!,
 	amount: Int!,
-	date: String!,
+	date: Date!,
 	description: String
+}
+
+type Account {
+	accountId: ID!
+	name: String!
 }
 
 type Query {
   transaction(id: ID!): Transaction,
-  transactions(startDate: String, endDate: String, sort: Sort, sortBy: SortBy): [Transaction!]!,
+  transactions(startDate: Date, endDate: Date, sort: Sort, sortBy: SortBy): [Transaction!]!,
 }
 
 type Mutation {
 	updateTransactionDescription(description: String!, id: ID!): Transaction
+	createAccount(name: String!): Account
 }
 
 enum Sort {

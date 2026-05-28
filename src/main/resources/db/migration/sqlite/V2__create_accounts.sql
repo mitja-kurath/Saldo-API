@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS accounts (
+    account_id TEXT PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL
+)
