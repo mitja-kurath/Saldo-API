@@ -6,4 +6,6 @@ import java.util.UUID
 
 interface TransactionRepository : JpaRepository<Transaction, UUID> {
     fun findByDateBetween(startDate: LocalDate, endDate: LocalDate): List<Transaction>
+    fun findByAccountAccountId(accountId: UUID): List<Transaction>
+    fun findByAccountAccountIdAndDateBetween(accountId: UUID, startDate: LocalDate, endDate: LocalDate): List<Transaction>
 }

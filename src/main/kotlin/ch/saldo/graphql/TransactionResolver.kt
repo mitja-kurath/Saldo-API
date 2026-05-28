@@ -19,13 +19,19 @@ class TransactionResolver(
         @Argument startDate: LocalDate? = null,
         @Argument endDate: LocalDate? = null,
         @Argument sort: Sort? = null,
-        @Argument sortBy: SortBy? = null
+        @Argument sortBy: SortBy? = null,
+        @Argument accountId: UUID? = null
     ): List<Transaction> {
 
-        val transactions = if (startDate != null && endDate != null) {
-            transactionRepository.findByDateBetween(startDate, endDate)
-        } else {
-            transactionRepository.findAll()
+        val transactions = when {
+            accountId != null && startDate != null && endDate != null ->
+                transactionRepository.findByAccountAccountIdAndDateBetween(accountId, startDate, endDate)
+            accountId != null ->
+                transactionRepository.findByAccountAccountId(accountId)
+            startDate != null && endDate != null ->
+                transactionRepository.findByDateBetween(startDate, endDate)
+            else ->
+                transactionRepository.findAll()
         }
 
         if (sort == null || sortBy == null) return transactions

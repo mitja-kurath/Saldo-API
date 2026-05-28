@@ -14,7 +14,7 @@ type Account {
 
 type Query {
   transaction(id: ID!): Transaction,
-  transactions(startDate: Date, endDate: Date, sort: Sort, sortBy: SortBy): [Transaction!]!,
+  transactions(startDate: Date, endDate: Date, sort: Sort, sortBy: SortBy, accountId: ID): [Transaction!]!,
 }
 
 type Mutation {
